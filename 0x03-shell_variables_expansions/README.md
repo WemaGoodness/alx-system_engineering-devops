@@ -88,6 +88,11 @@ usr
 var
 vmlinuz
 whoareyou
+```
+
+Gives:
+
+```
 ubuntu@ip-172-31-63-244:/$ \ls -1 | ./102-odd
 bin
 dev
