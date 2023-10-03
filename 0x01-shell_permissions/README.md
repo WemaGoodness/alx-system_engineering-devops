@@ -27,11 +27,11 @@ Sets the permission to the file hello as follows:
 * Other users: all the permissions
 ###### 9-John_Doe
 Sets the mode of the file hello to this:
-'''console
 
+```sh
 -rwxr-x-wx 1 julien julien 23 Sep 20 14:25 hello
+```
 
-'''
 ###### 10-mirror_permissions
 Sets the mode of the file hello the same as olleh’s mode.
 ###### 11-directories_permissions
