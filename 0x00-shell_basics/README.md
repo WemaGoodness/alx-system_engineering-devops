@@ -1,7 +1,7 @@
 # SHELL BASICS
 
 The scripts in this repository section consists of basic shell commands.
-The descriptions of what each cript does is listed below:
+The descriptions of what each script does is listed below:
 
 ###### 0-current_working_directory
 This script prints the absolute path name of the current working directory.
