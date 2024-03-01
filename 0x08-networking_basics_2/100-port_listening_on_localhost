@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script listens on port 98 on localhost
+
+# Create a TCP/IP socket on port 98
+exec 3<>/dev/tcp/127.0.0.1/98
+
+# Loop forever
+while true
+do
+  # Read a line of input from the socket
+  read -r line <&3
+  
+  # If the line is non-empty, print it
+  if [[ $line ]]; then
+    echo $line
+  fi
+done
