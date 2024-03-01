@@ -1,0 +1,21 @@
+#!/bin/bash
+
+netstat_output=$(netstat -tuln)
+
+listening_sockets=$(echo "$netstat_output" | grep "LISTEN")
+
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+
+while read -r line; do
+    proto=$(echo "$line" | awk '{print $1}')
+    local_addr=$(echo "$line" | awk '{print $4}')
+    foreign_addr=$(echo "$line" | awk '{print $5}')
+    state=$(echo "$line" | awk '{print $6}')
+    pid_program=$(echo "$line" | awk '{print $7}')
+
+    pid=$(echo "$pid_program" | cut -d'/' -f1)
+    program=$(echo "$pid_program" | cut -d'/' -f2)
+
+    echo "$proto $local_addr $foreign_addr $state $pid/$program"
+done <<< "$listening_sockets"
