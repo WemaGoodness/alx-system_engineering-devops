@@ -1,0 +1,16 @@
+https://photos.app.goo.gl/qCXdKyi5cxFxPUyH8
+
+Additional Elements: We add multiple servers to distribute the load and ensure high availability. The load balancer (HAproxy) is used to distribute network traffic across multiple servers to ensure no single server is overwhelmed. Nginx is used as the web server to handle HTTP requests and serve static files. The application server runs the business logic of your application, and MySQL is used as the database to store and retrieve data. Firewalls are added to protect the servers from unauthorized access. SSL certificate is used to serve traffic over HTTPS. Monitoring clients are used to monitor the performance and health of the servers.
+Firewalls: Firewalls are used to protect the servers from unauthorized access. They monitor and control incoming and outgoing network traffic based on predetermined security rules.
+HTTPS: HTTPS encrypts the data sent between the user and the servers, protecting it from eavesdropping, tampering, and forgery. This is especially important when dealing with sensitive data.
+Monitoring: Monitoring is used to track the performance and health of the servers. It helps in identifying any potential issues or bottlenecks, ensuring the smooth operation of the website.
+Data Collection: The monitoring tool collects data by periodically polling the servers for various metrics, such as CPU usage, memory usage, network traffic, etc. This data is then sent to a central server for analysis.
+Web Server QPS: QPS (Queries Per Second) is a measure of how many requests a server can handle per second. To monitor QPS, you would need to configure your monitoring tool to track the number of requests received by your web server every second.
+
+
+
+However, this setup has some potential issues:
+
+SSL Termination: If SSL is terminated at the load balancer, then the traffic between the load balancer and the servers is not encrypted. This could potentially expose sensitive data if the internal network is compromised.
+MySQL Server: If only one MySQL server is capable of accepting writes, then it becomes a bottleneck when there are a large number of write requests. It also becomes a single point of failure – if it goes down, all write operations will fail.
+Same Components: Having servers with all the same components can lead to inefficient use of resources. For example, if one component is more resource-intensive than the others, it could starve the other components of resources. It also makes it harder to scale individual components based on their specific needs.

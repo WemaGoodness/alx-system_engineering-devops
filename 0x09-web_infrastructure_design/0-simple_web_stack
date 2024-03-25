@@ -1,0 +1,16 @@
+https://photos.app.goo.gl/GneJVEJP2JHGbcUo6
+
+Server: A server is a computer or system that provides resources, data, services, or programs to other computers, known as clients, over a network. In our case, the server is hosting a web server (Nginx), an application server, and a MySQL database.
+Domain Name: The domain name is the address where users can access the website. In this case, www.foobar.com is the domain name. It’s used to find the server where your website is hosted.
+DNS Record: The www in www.foobar.com is a type of DNS record known as a subdomain. It’s typically used to direct to the website’s homepage. The DNS translates this to the IP address of the server (in this case, 8.8.8.8).
+Web Server (Nginx): The web server serves the requested HTML pages or files to the client. When a user requests a webpage, Nginx first checks if the page is static and serves it directly. If it’s dynamic, Nginx passes the request to the application server.
+Application Server: The application server runs your application code. It could be written in any language like Python, Ruby, etc. The application server performs the business logic and constructs a HTML page for the web server to serve to the client.
+Database (MySQL): The database is where the data of your website lives. The application server will communicate with the database server to store and retrieve data.
+Communication: The server communicates with the user’s computer using the HTTP/HTTPS protocol. When a user makes a request, the server responds with the requested resources.
+
+
+However, this setup has some potential issues:
+
+Single Point of Failure (SPOF): Since everything is on a single server, if it goes down, the entire website goes down.
+Maintenance Downtime: If you need to update the application code or the server software, or if you need to restart the server, the website will be unavailable during that time.
+Scaling: If your website receives a lot of traffic, a single server may not be able to handle all of the requests. You would need to add more servers, which isn’t possible in this setup.

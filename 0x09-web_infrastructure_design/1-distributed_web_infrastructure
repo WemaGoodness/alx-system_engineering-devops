@@ -1,0 +1,15 @@
+https://photos.app.goo.gl/VwB442cU1jBTya5T8
+
+Additional Elements: We add multiple servers to distribute the load and ensure high availability. The load balancer (HAproxy) is used to distribute network traffic across multiple servers to ensure no single server is overwhelmed. Nginx is used as the web server to handle HTTP requests and serve static files. The application server runs the business logic of your application, and MySQL is used as the database to store and retrieve data.
+Load Balancer Distribution Algorithm: The load balancer could be configured with a round-robin algorithm, which distributes client requests evenly across all servers. When a request comes in, the load balancer forwards the request to the next server in the list, looping back to the first server when it reaches the end of the list.
+Active-Active vs Active-Passive Setup: In an Active-Active setup, all servers are actively handling requests. If one server fails, the load balancer redirects traffic to the remaining active servers. In an Active-Passive setup, the passive server only starts handling requests if the active server fails. In this case, we’re using an Active-Active setup to maximize resource utilization and ensure high availability.
+Primary-Replica (Master-Slave) Cluster: In a Primary-Replica setup, the primary node (also known as the master node) handles all write operations and can also handle read operations. The replica nodes (also known as slave nodes) replicate the primary node’s data and handle read operations. This setup can improve performance by spreading read requests across multiple nodes and provide redundancy in case the primary node fails.
+Primary Node vs Replica Node: The primary node is responsible for handling write operations, while the replica nodes handle read operations. This means that any changes to the data (like creating, updating, or deleting records) are made on the primary node, and then those changes are replicated to the replica nodes.
+
+
+
+However, this setup has some potential issues:
+
+Single Point of Failure (SPOF): If the load balancer goes down, all servers become unreachable. To mitigate this, a secondary load balancer can be used.
+Security Issues: Without a firewall, the servers are exposed to the internet and could be vulnerable to attacks. Without HTTPS, the data transferred between the user and the servers is not encrypted and could be intercepted.
+No Monitoring: Without monitoring, it’s difficult to identify and troubleshoot issues or understand the performance of the servers.
