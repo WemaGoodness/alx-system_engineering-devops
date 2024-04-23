@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# This script writes "Hello Holberton" to the index.html file in the /var/www/html directory
+# This script writes "Hello Holberton" to the index.html file
+# in the /var/www/html directory
 echo "Hello Holberton" > /var/www/html/index.html
