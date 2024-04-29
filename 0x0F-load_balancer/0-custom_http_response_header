@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# This script configures Nginx to include a custom header in its HTTP response
+
+# Make sure Nginx is installed
+if ! command -v nginx &> /dev/null
+then
+    echo "Nginx is not installed. Please install it first."
+    exit 1
+fi
+
+# Get the hostname of the server
+HOSTNAME=$(hostname)
+
+# Create a backup of the original nginx.conf file
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+
+# Add the custom header to the http context in the nginx.conf file
+sudo sed -i "/http {/a \ \ \ \ add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+
+# Test the configuration
+sudo nginx -t
+
+# If the configuration test is successful, reload Nginx
+if [ $? -eq 0 ]
+then
+    sudo systemctl reload nginx
+else
+    echo "Failed to update Nginx configuration. Please check your nginx.conf file."
+    exit 1
+fi
+
+echo "Nginx configuration updated successfully."
