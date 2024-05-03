@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# This script displays information about subdomains
+
+# Declare an associative array with your server IPs
+declare -A servers=( ["www"]="100.25.109.251" ["lb-01"]="100.25.109.251" ["web-01"]="54.164.162.167" ["web-02"]="52.205.90.128" )
+
+# Function to display subdomain info
+display_info() {
+    local domain=$1
+    local subdomain=$2
+    local ip_address=${servers[${subdomain}]}
+    echo ${subdomain} ${ip_address} | awk '{printf "The subdomain %s is a A record and points to %s\n", $1, $2}'
+}
+
+# Check if domain and subdomain are provided
+if [[ -n $1 ]]; then
+    domain=$1
+    if [[ -n $2 ]]; then
+        display_info $domain $2
+    else
+        for subdomain in www lb-01 web-01 web-02; do
+            display_info $domain $subdomain
+        done
+    fi
+else
+    echo "Please provide a domain."
+fi
