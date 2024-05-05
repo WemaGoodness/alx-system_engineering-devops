@@ -27,3 +27,10 @@ then
     sed -i 's/listen [^;]*;/listen 80;/g' /etc/nginx/sites-available/default
     systemctl restart nginx
 fi
+
+if systemctl is-active --quiet nginx && netstat -tuln | grep ':80 ' | grep -q 'nginx'
+then
+    echo "2"
+else
+    echo "0"
+fi
