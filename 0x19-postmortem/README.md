@@ -29,4 +29,4 @@
   - Conduct a training session on best practices for configuration management.
 
 ## Humor of the Day
-[Humor](https://i.redd.it/e1fvfqdxncr61.png)
+![Humor](https://i.redd.it/e1fvfqdxncr61.png)
